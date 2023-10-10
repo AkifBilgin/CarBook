@@ -1,0 +1,30 @@
+﻿@model List<Brand>
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <br /><br />
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Marke</th>
+            <th>Status</th>
+            <th>Löschen</th>
+            <th>Update</th>
+        </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.BrandID</td>
+                    <td>@item.BrandName</td>
+                    <td>@item.Status</td>
+                    <td><a href="#" class="btn btn-danger">Löschen</a></td>
+                    <td><a href="#" class="btn btn-success">Update</a></td>
+                </tr>
+            }
+        <a href="#" class="btn btn-primary">Neu Marke</a>
+    </table>
+
+</div>
