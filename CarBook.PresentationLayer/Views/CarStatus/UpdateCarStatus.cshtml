@@ -1,0 +1,16 @@
+﻿@model CarStatus
+@{
+    ViewData["Title"] = "UpdateCarStatus";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Status ändern</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="CarStatusID" />
+    <label>Status</label>
+    <input type="text" asp-for="CarStatusName" style="border: 1px solid #2222" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Status ändern</button>
+</form>
+

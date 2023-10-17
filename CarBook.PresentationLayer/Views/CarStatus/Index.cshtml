@@ -1,0 +1,31 @@
+﻿@model List<CarStatus>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Auto Status</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Status</th>
+        <th>Löschen</th>
+        <th>Update</th>
+        <th>Details</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CarStatusID</td>
+            <td>@item.CarStatusName</td>
+            <td><a href="/CarStatus/RemoveCarStatus/@item.CarStatusID" class="btn btn-outline-danger">Löchen</a></td>
+            <td><a href="/CarStatus/UpdateCarStatus/@item.CarStatusID" class="btn btn-outline-success">Update</a></td>
+            <td><a href="#" class="btn btn-outline-warning">Details</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/CarStatus/CreateCarStatus" class="btn btn-outline-primary">Auto Status hinzufügen</a>
+
+

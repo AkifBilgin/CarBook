@@ -1,30 +1,27 @@
 ﻿@model List<Brand>
 @{
-    Layout = null;
+    Layout = "~/Views/AdminLayout/Index.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<div class="container">
-    <br /><br />
-    <table class="table table-bordered">
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Marke</th>
+        <th>Status</th>
+        <th>Löschen</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>#</th>
-            <th>Marke</th>
-            <th>Status</th>
-            <th>Löschen</th>
-            <th>Update</th>
+            <td>@item.BrandID</td>
+            <td>@item.BrandName</td>
+            <td>@item.Status</td>
+            <td><a href="/Brand/DeleteBrand/@item.BrandID" class="btn btn-danger">Löschen</a></td>
+            <td><a href="/Brand/UpdateBrand/@item.BrandID" class="btn btn-success">Update</a></td>
         </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.BrandID</td>
-                    <td>@item.BrandName</td>
-                    <td>@item.Status</td>
-                    <td><a href="#" class="btn btn-danger">Löschen</a></td>
-                    <td><a href="#" class="btn btn-success">Update</a></td>
-                </tr>
-            }
-        <a href="#" class="btn btn-primary">Neu Marke</a>
-    </table>
-
-</div>
+    }
+   
+</table>
+<a href="/Brand/AddBrand" class="btn btn-primary">Neu Marke</a>

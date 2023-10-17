@@ -1,0 +1,15 @@
+﻿@model CarStatus
+@{
+    ViewData["Title"] = "CreateCarStatus";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Status hinzufügen</h1>
+
+<form method="post">
+    <label>Status</label>
+    <input type="text" asp-for="CarStatusName" style="border: 1px solid #2222" class="form-control" />
+    <br />
+    <button class="btn btn-primary">Status hinzufügen</button>
+</form>
+
