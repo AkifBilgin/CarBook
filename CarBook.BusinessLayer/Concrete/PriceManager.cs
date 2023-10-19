@@ -33,6 +33,11 @@ namespace CarBook.BusinessLayer.Concrete
             return _priceDal.GetByID(id);
         }
 
+        public List<Price> TGetPricesWithCars()
+        {
+            return _priceDal.GetPricesWithCars();
+        }
+
         public void TInsert(Price entity)
         {
             _priceDal.Insert(entity);
