@@ -1,0 +1,61 @@
+﻿@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/login/login/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/login/login/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <h2 class="form-title">Account erstellen</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" asp-for="Name"  placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" asp-for="Surname" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-input" asp-for="Username" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" asp-for="Email"  placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" asp-for="Password" placeholder="Passwort" />
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>Ich stimme der  <a href="#" class="term-service">Nutzungsbedingungen</a> zu </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Registirieren" />
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Haben Sie bereits ein Account ? <a href="#" class="loginhere-link">Login</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script src="~/login/login/vendor/jquery/jquery.min.js"></script>
+    <script src="~/login/login/js/main.js"></script>
+</body>
+</html>
