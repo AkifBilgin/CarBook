@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+@await Component.InvokeAsync("_HeadUILayoutComponentPartial")
+
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+    @await Component.InvokeAsync("_NavbarComponentPartial")
+    @await Component.InvokeAsync("_BlockCoverViewComponentPartial")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("_FooterComponentLayoutPartial")
+    @await Component.InvokeAsync("_ScriptViewComponentPartial")
+
+
+</body>
+
+</html>
+
+

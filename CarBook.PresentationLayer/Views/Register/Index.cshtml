@@ -24,20 +24,21 @@
                     <form method="POST" id="signup-form" class="signup-form">
                         <h2 class="form-title">Account erstellen</h2>
                         <div class="form-group">
-                            <input type="text" class="form-input" asp-for="Name"  placeholder="Name" />
+                            <input type="text" class="form-input" asp-for="Name"  placeholder="Vorname" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" asp-for="Surname" placeholder="Name" />
+                            <input type="text" class="form-input" asp-for="Surname" placeholder="Nachname" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-input" asp-for="Username" placeholder="Name" />
+                            <input type="text" class="form-input" asp-for="Username" placeholder="Username" />
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-input" asp-for="Email"  placeholder="Email" />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-input" asp-for="Password" placeholder="Passwort" />
+                            <input type="password" class="form-input" required asp-for="Password" placeholder="Passwort" />
                             <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -45,10 +46,11 @@
                         </div>
                         <div class="form-group">
                             <input type="submit" name="submit" id="submit" class="form-submit" value="Registirieren" />
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                         </div>
                     </form>
                     <p class="loginhere">
-                        Haben Sie bereits ein Account ? <a href="#" class="loginhere-link">Login</a>
+                        Haben Sie bereits ein Account ? <a href="/Login/Index" class="loginhere-link">Login</a>
                     </p>
                 </div>
             </div>
