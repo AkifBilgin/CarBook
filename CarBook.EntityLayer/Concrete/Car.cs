@@ -23,6 +23,7 @@ namespace CarBook.EntityLayer.Concrete
         public int CarStatusID { get; set; }
         public CarStatus CarStatus { get; set; }
         public List<Price> Prices { get; set; }
+        public List<CarDetail> CarDetails { get; set; }
 
     }
 }
