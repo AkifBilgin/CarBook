@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "CarDetails";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
@@ -15,8 +14,8 @@
 
 
                 <div class="pt-5">
-                   
-                    @await Component.InvokeAsync("_CarDetailCommentComponentPartial")
+
+                    @await Component.InvokeAsync("_CarDetailCommentComponentPartial", new {id=ViewBag.id})
                     <!-- END comment-list -->
                     @await Component.InvokeAsync("_CarDetailLeaveCommentPartial")
                 </div>
@@ -33,8 +32,8 @@
                 </div>
                 @await Component.InvokeAsync("_CarDeatailCategoryComponentPartial")
 
-                @await Component.InvokeAsync("_CarDetailAboutAuthorComponentPartial")
-               
+                @await Component.InvokeAsync("_CarDetailAboutAuthorComponentPartial", new {id=ViewBag.id})
+
 
                 <div class="sidebar-box">
                     <h3 class="text-black">Paragraph</h3>

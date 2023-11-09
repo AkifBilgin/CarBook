@@ -18,6 +18,11 @@ namespace CarBook.BusinessLayer.Concrete
             _carDetailDal = carDetailDal;
         }
 
+        public CarDetail GetCarDetailWithAutor(int id)
+        {
+            return _carDetailDal.GetCarDetailWithAutor(id);
+        }
+
         public void TDelete(CarDetail entity)
         {
             _carDetailDal.Delete(entity);

@@ -1,12 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarBook.BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarBook.PresentationLayer.ViewComponents.CarDetailComponents
 {
     public class _CarDetailAboutAuthorComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly ICarDetailService _carDetailService;
+
+        public _CarDetailAboutAuthorComponentPartial(ICarDetailService carDetailService)
         {
-            return View();
+            _carDetailService = carDetailService;
+        }
+
+        public IViewComponentResult Invoke(int id)
+        {
+           var value = _carDetailService.GetCarDetailWithAutor(id);
+            return View(value);
         }
     }
 }

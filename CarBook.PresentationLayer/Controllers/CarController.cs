@@ -31,6 +31,7 @@ namespace CarBook.PresentationLayer.Controllers
         {
             ViewBag.title1 = "Fahrzeug Details";
             ViewBag.title2 = "Details";
+            ViewBag.id=id;
             var value = _carDetailService.TGetCarDetailByCarId(id);
             ViewBag.CarDetails = value.Description;
             return View();
