@@ -25,5 +25,6 @@ namespace CarBook.EntityLayer.Concrete
         public List<Price> Prices { get; set; }
         public List<CarDetail> CarDetails { get; set; }
         public List<Comment> Comments { get; set; }
+        public decimal CarPrice { get; set; }
     }
 }

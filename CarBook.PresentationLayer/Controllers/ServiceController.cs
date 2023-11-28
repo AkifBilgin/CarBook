@@ -52,5 +52,25 @@ namespace CarBook.PresentationLayer.Controllers
             }
             return View();
         }
+        public IActionResult DeleteService(int id)
+        {
+            var serviceToDelete = _serviceService.TGetByID(id);
+            _serviceService.TDelete(serviceToDelete);
+            return RedirectToAction("ServiceList");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateService(int id)
+        {
+            var value = _serviceService.TGetByID(id);
+            return View(value); 
+        }
+
+        [HttpPost]
+        public IActionResult UpdateService(Service service)
+        {
+            _serviceService.TUpdate(service);
+            return RedirectToAction("ServiceList");
+        }
     }
 }

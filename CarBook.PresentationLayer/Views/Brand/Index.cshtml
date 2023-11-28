@@ -1,27 +1,63 @@
 ﻿@model List<Brand>
 @{
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Layout/Index.cshtml";
 }
+<hr />
+<form asp-action="Index" asp-controller="Brand" method="get">
+    <div>
+        <p>
+            <b>Fahrzeug Suchen</b>
+            <br />
+            <div class="form-floating mb-3">
+                <input type="text" name="name" class="form-control border-primary" id="floatingInput" value="@ViewData["CurrentFilter"]"
+                       placeholder="Suchen">
+                <label for="floatingInput">Suchen</label>
+            </div>
+            <input type="submit" class="btn btn-outline-dark" value="Suchen" />
+        </p>
+    </div>
+
+</form>
+<hr />
+<br />
 
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Marke</th>
-        <th>Status</th>
-        <th>Löschen</th>
-        <th>Update</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.BrandID</td>
-            <td>@item.BrandName</td>
-            <td>@item.Status</td>
-            <td><a href="/Brand/DeleteBrand/@item.BrandID" class="btn btn-danger">Löschen</a></td>
-            <td><a href="/Brand/UpdateBrand/@item.BrandID" class="btn btn-success">Update</a></td>
-        </tr>
-    }
-   
-</table>
-<a href="/Brand/AddBrand" class="btn btn-primary">Neu Marke</a>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive-sm">
+                <table class="table table-bordered border-primary table-centered mb-0">
+                    <thead>
+                        <tr>
+                            <th>Marke</th>
+                            <th>Status</th>
+                            <th class="text-center">Aktion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.BrandName</td>
+                                <td>@item.Status</td>
+                                <td class="text-center">
+                                <a href="/Brand/DeleteBrand/@item.BrandID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                        <i class="ri-delete-bin-2-line"></i>
+                                    </a>
+                                <a href="/Brand/UpdateBrand/@item.BrandID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Ändern">
+                                    <i class="ri-edit-line"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div> 
+        </div> 
+    </div>
+<a href="/Brand/AddBrand" class="btn btn-outline-primary">Neu Marke <i class=" ri-add-circle-line"></i></a>
+

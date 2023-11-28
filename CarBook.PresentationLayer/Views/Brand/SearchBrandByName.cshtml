@@ -1,0 +1,37 @@
+﻿@model List<Brand>
+@{
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<form asp-action="SearchBrandByName" asp-controller="Brand" method="get">
+    <div>
+        <p>
+            <b>Bitte Fahrzeugmarke eingeben</b> <input type="text" name="name" value="@ViewData["CurrentFilter"]" class="form-control" style="border:1px solid #222" />
+            <br />
+            <input type="submit" class="btn btn-outline-dark" value="Suchen" />
+        </p>
+    </div>
+
+</form>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Marke</th>
+        <th>Status</th>
+        <th>Löschen</th>
+        <th>Update</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BrandID</td>
+            <td>@item.BrandName</td>
+            <td>@item.Status</td>
+            <td><a href="/Brand/DeleteBrand/@item.BrandID" class="btn btn-danger">Löschen</a></td>
+            <td><a href="/Brand/UpdateBrand/@item.BrandID" class="btn btn-success">Update</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Brand/AddBrand" class="btn btn-primary">Neu Marke</a>

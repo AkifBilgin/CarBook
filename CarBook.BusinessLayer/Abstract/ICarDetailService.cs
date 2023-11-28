@@ -11,5 +11,6 @@ namespace CarBook.BusinessLayer.Abstract
     {
         CarDetail TGetCarDetailByCarId(int id);
         CarDetail GetCarDetailWithAutor(int id);
+        List<CarDetail> GetCarDetailListWithInfo();
     }
 }

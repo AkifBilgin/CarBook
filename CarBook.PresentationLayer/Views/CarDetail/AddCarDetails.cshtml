@@ -1,0 +1,55 @@
+﻿@model CarDetail
+@{
+    ViewData["Title"] = "AddCarDetails";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Fahrzeugdetails hinzufügen</h1>
+
+<form method="post" asp-action="AddCarDetails" asp-controller="CarDetail">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" asp-for="CarID" asp-items="@ViewBag.CarList"
+                            aria-label="Floating label select example">
+                    </select>
+                    <label for="floatingSelect">Fahrzeug</label>
+                </div>
+                <br />
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" asp-for="AppUserID" asp-items="@ViewBag.UserList"
+                            aria-label="Floating label select example">
+                    </select>
+                    <label for="floatingSelect">Autor</label>
+                </div>
+                <br />
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" id="floatingInput" asp-for="Description" style="height:200px"></textarea>
+                    <label for="floatingInput">Beschreibung</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="btnAddCarDetails" class="btn btn-outline-primary">Hinzufügen <i class="ri-add-circle-line"></i></button>
+</form>
+
+<script>
+    const addCarDetailsButton = document.querySelector('#btnAddCarDetails');
+    const form = addCarDetailsButton.closest('form');
+
+    addCarDetailsButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Hinzugefügt",
+            text: "Fahrzeugdetails wurden erfolgreich hinzugefügt",
+            imageUrl: "https://res.cloudinary.com/djlqp41lf/image/upload/v1700939008/Rental_Logo_gg454l.png",
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: "Firmen Logo"
+        }).then(function () {
+            form.submit();
+        });
+    });
+</script>

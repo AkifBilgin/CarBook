@@ -1,0 +1,52 @@
+﻿@model List<CarDetail>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered border-primary table-centered mb-0">
+                <thead>
+                    <tr>
+                        <th>Marke</th>
+                        <th>Modell</th>
+                        <th>Beschreibung</th>
+                        <th>Autor</th>
+                        <th>Datum</th>
+                        <th class="text-center">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Car.Brand.BrandName</td>
+                            <td>@item.Car.Model</td>
+                            <td>@item.Description</td>
+                            <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                            <td>@item.CreatedDate.ToShortDateString()</td>
+                            <td class="text-center">
+                                <a href="/CarDetail/DeleteCarDetail/@item.CarDetailID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                </a>
+                                <a href="/CarDetail/UpdateCarDetail/@item.CarDetailID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Ändern">
+                                    <i class="ri-edit-line"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a href="/CarDetail/AddCarDetails" class="btn btn-outline-primary">Neu Marke <i class=" ri-add-circle-line"></i></a>
+
+

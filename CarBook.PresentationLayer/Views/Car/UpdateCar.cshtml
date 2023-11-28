@@ -1,0 +1,78 @@
+﻿@model Car
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Fahrzeug aktualisieren</h1>
+
+
+<form method="post" asp-action="UpdateCar" asp-controller="Car" enctype="multipart/form-data">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <input type="hidden" asp-for="CarID" />
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Model"
+                           placeholder="Marke">
+                    <label for="floatingInput">Marke</label>
+                </div>
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" asp-for="CarCategoryID" asp-items="@ViewBag.CarCategory"
+                            aria-label="Floating label select example">
+                    </select>
+                    <label for="floatingSelect">Works with selects</label>
+                </div>
+                <br />
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" asp-for="BrandID" asp-items="@ViewBag.CarBrand"
+                            aria-label="Floating label select example">
+                    </select>
+                    <label for="floatingSelect">Works with selects</label>
+                </div>
+                <br />
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="CarPrice"
+                           placeholder="Marke">
+                    <label for="floatingInput">Preis</label>
+                </div>
+                <div class="mb-3">
+                    <label for="example-fileinput" class="form-label">
+                        Foto hochladen
+                    </label>
+                    <input type="file" id="example-fileinput" class="form-control" asp-for="ImageUrl">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="GearType"
+                           placeholder="Marke">
+                    <label for="floatingInput">Getriebe</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Mileage"
+                           placeholder="Marke">
+                    <label for="floatingInput">KM-Stand</label>
+                </div>
+                <div class="form-floating mb-3 bprder-black">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="PersonCount"
+                           placeholder="Marke">
+                    <label for="floatingInput">Anzahl Sitze</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Year"
+                           placeholder="Marke">
+                    <label for="floatingInput">Erstzulassung</label>
+                </div>
+                <div class="form-floating">
+
+                    <select class="form-select" id="floatingSelect" asp-for="CarStatusID" asp-items="@ViewBag.CarStatus"
+                            aria-label="Floating label select example">
+                    </select>
+                    <label for="floatingSelect">Status</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="btnUpdateCar" class="btn btn-outline-primary">Ändern <i class="ri-edit-line"></i></button>
+</form>

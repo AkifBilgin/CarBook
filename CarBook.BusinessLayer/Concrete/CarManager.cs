@@ -45,10 +45,9 @@ namespace CarBook.BusinessLayer.Concrete
 
         public void TInsert(Car entity)
         {
-            if(entity.Year >=2010 && entity.Prices.Count > 0 && entity.Mileage<=500000)
-            {
+           
                 _carDal.Insert(entity);
-            }
+            
            
         }
 

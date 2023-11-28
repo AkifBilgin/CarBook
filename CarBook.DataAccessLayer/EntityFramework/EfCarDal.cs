@@ -17,7 +17,7 @@ namespace CarBook.DataAccessLayer.EntityFramework
         {
             using (CarBookContext context = new CarBookContext())
             {
-               var values = context.Cars.Include(y=>y.CarStatus).Include(x => x.Brand).ToList();
+               var values = context.Cars.Include(y=>y.CarStatus).Include(x => x.Brand).Include(i=>i.CarCategory).Include(x=>x.CarDetails).ToList();
                return values;
             }
         }

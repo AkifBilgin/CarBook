@@ -15,14 +15,18 @@ namespace CarBook.PresentationLayer.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Controller = "Fuhrpark Status";
+            ViewBag.Action = "Index";
             var values = _carStatusService.TGetAll();
             return View(values);
         }
 
         [HttpGet]
-        public IActionResult CreateCarStatus() 
+        public IActionResult CreateCarStatus()
         {
-            return View();  
+            ViewBag.Controller = "Fuhrpark Status";
+            ViewBag.Action = "Satus hinzufügen";
+            return View();
         }
 
         [HttpPost]
@@ -34,7 +38,7 @@ namespace CarBook.PresentationLayer.Controllers
 
         public IActionResult RemoveCarStatus(int id)
         {
-           var value =  _carStatusService.TGetByID(id);
+            var value = _carStatusService.TGetByID(id);
             _carStatusService.TDelete(value);
             return RedirectToAction("Index");
         }
@@ -42,6 +46,8 @@ namespace CarBook.PresentationLayer.Controllers
         [HttpGet]
         public IActionResult UpdateCarStatus(int id)
         {
+            ViewBag.Controller = "Fuhrpark Status";
+            ViewBag.Action = "Update Status";
             var value = _carStatusService.TGetByID(id);
             return View(value);
         }

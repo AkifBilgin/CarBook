@@ -1,0 +1,80 @@
+﻿@model Car
+
+
+<div class="modal fade" id="@Model.CarID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <img src="@Model.ImageUrl" style="height:320px; width:440px;"/>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
+                                <input type="hidden" asp-for="CarID" />
+                                <input type="text" class="form-control" id="floatingInput" asp-for="Model" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Marke</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="CarCategory.CategoryName" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Kategorie</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="Brand.BrandName" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Marke</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="CarPrice" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Preis</label>
+                            </div>
+                          
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="GearType" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Getriebe</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="Mileage" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">KM-Stand</label>
+                            </div>
+                            <div class="form-floating mb-3 bprder-black">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="PersonCount" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Anzahl Sitze</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="Year" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Erstzulassung</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="CarStatus.CarStatusName" readonly
+                                       placeholder="Marke">
+                                <label for="floatingInput">Status</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea readonly asp-for="CarDetails.FirstOrDefault().Description" style="width:450px; height:300px;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>

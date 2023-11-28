@@ -16,7 +16,7 @@ namespace CarBook.BusinessLayer.ValidationRules.ServiceValidator
             RuleFor(x => x.Description).NotEmpty().WithMessage("Bitte eine Beschreibung hinzufügen");
             RuleFor(x => x.Icon).NotEmpty().WithMessage("Bitte einen Icon eingeben");
             RuleFor(x => x.Title).MinimumLength(3).MaximumLength(30);
-            RuleFor(x=>x.Description).MaximumLength(10).MaximumLength(250);
+            RuleFor(x=>x.Description).MinimumLength(10).MaximumLength(250);
         }
     }
 }

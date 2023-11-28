@@ -1,31 +1,45 @@
 ﻿@model List<CarStatus>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>Auto Status</h1>
+<h1>Fuhrpark Status</h1>
 
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Status</th>
-        <th>Löschen</th>
-        <th>Update</th>
-        <th>Details</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.CarStatusID</td>
-            <td>@item.CarStatusName</td>
-            <td><a href="/CarStatus/RemoveCarStatus/@item.CarStatusID" class="btn btn-outline-danger">Löchen</a></td>
-            <td><a href="/CarStatus/UpdateCarStatus/@item.CarStatusID" class="btn btn-outline-success">Update</a></td>
-            <td><a href="#" class="btn btn-outline-warning">Details</a></td>
-        </tr>
-    }
-</table>
+<div class="card">
+<div class="card-body">
+    <div class="table-responsive-sm">
+        <table class="table table-bordered border-primary table-centered mb-0">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th class="text-center">Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CarStatusName</td>
+                        <td class="text-center">
+                                <a href="/CarStatus/RemoveCarStatus/@item.CarStatusID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-custom-class="custom-tooltip"
+                               data-bs-title="Löschen">
+                                <i class="ri-delete-bin-2-line"></i>
+                            </a>
+                                <a href="/CarStatus/UpdateCarStatus/@item.CarStatusID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                               data-bs-custom-class="custom-tooltip"
+                               data-bs-title="Ändern">
+                                <i class="ri-edit-line"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
 
-<a href="/CarStatus/CreateCarStatus" class="btn btn-outline-primary">Auto Status hinzufügen</a>
-
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+<a href="/CarStatus/CreateCarStatus" class="btn btn-outline-primary">Auto Status hinzufügen <i class=" ri-add-circle-line"></i></a>
 

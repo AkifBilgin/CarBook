@@ -30,5 +30,15 @@ namespace CarBook.DataAccessLayer.EntityFramework
                return value;
             }
         }
+
+        public List<CarDetail> GetCarDetailListWithInfo() 
+        {
+            using CarBookContext context = new CarBookContext();
+
+
+            var value = context.CarDetails.Include(x => x.Car).ThenInclude(x => x.Brand).Include(x => x.AppUser).ToList();
+            return value;
+            
+        }
     }
 }

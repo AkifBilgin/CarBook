@@ -166,6 +166,9 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.Property<int>("CarCategoryID")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("CarPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("CarStatusID")
                         .HasColumnType("int");
 
@@ -375,15 +378,12 @@ namespace CarBook.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceID"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ServiceID");

@@ -1,12 +1,70 @@
 ﻿@model List<Car>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Layout/Index.cshtml";
 }
 
 <h1>Fahrzeuge</h1>
 
-<table class="table table-bordered">
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered border-primary table-centered mb-0">
+                <thead>
+                    <tr>
+                        <th>Marke</th>
+                        <th>Model</th>
+                        <th>Erstzulassung</th>
+                        <th>Status</th>
+                        <th class="text-center">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @await Html.PartialAsync("~/Views/Car/AdminCarDetails.cshtml", item)
+                      
+                        <tr>
+                            <td>@item.Brand.BrandName</td>
+                            <td>@item.Model</td>
+                            <td>@item.Year</td>
+                            <td>@item.CarStatus.CarStatusName</td>
+                            <td class="text-center">
+                                <a href="/Car/DeleteCar/@item.CarID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                </a>
+                                <a href="/Car/UpdateCar/@item.CarID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Ändern">
+                                    <i class="ri-edit-line"></i>
+                                </a>
+                                <a href="/Car/CarDetails/@item.CarID" target="_blank" rel="noopener noreferrer" tabindex="" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Deatils">
+                                    <i class="ri-search-2-line"></i>
+                                </a>
+                                <a href="/Car/AdminCarDetails/@item.CarID" class="text-reset fs-16 px-1" data-bs-toggle="modal" data-bs-target="#@item.CarID">
+                                    <i class="ri-search-2-line" data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Details"></i>
+                                  
+                                </a>
+                            </td>
+                        </tr>
+                        
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a href="/Car/AddCar" class="btn btn-outline-primary">Fahrzeug hinzufügen  <i class=" ri-add-circle-line"></i></a>
+
+
+@* <table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Model</th>
@@ -20,7 +78,7 @@
         <th>Zeigen</th>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
             <td>@item.CarID</td>
             <td>@item.Model</td>
             <td>@item.CarCategoryID</td>
@@ -34,6 +92,34 @@
         </tr>
         }
 </table>
-<a href="#" class="btn btn-outline-primary">Fahrzeug hinzufügen</a>
-        
+<a href="#" class="btn btn-outline-primary">Fahrzeug hinzufügen</a><table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Model</th>
+        <th>Kategorie</th>
+        <th>Marke</th>
+        <th>Erstzulassung</th>
+        <th>Status</th>
+        <th>Löschen</th>
+        <th>Update</th>
+        <th>Details</th>
+        <th>Zeigen</th>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.CarID</td>
+            <td>@item.Model</td>
+            <td>@item.CarCategoryID</td>
+            <td>@item.Brand.BrandName</td>
+            <td>@item.Year</td>
+            <td>@item.CarStatus.CarStatusName</td>
+            <td><a href="#" class="btn btn-outline-danger">Löschen</a></td>
+            <td><a href="#" class="btn btn-outline-success">Update</a></td>
+            <td><a href="#" class="btn btn-outline-warning">Details</a></td>
+            <td><a href="#" class="btn btn-outline-secondary">Zeigen</a></td>
+        </tr>
+        }
+</table>
+<a href="#" class="btn btn-outline-primary">Fahrzeug hinzufügen</a> *@
+
 

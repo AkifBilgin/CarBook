@@ -1,15 +1,25 @@
 ﻿@model CarBook.EntityLayer.Concrete.Brand
 @{
     ViewData["Title"] = "UpdateBrand";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Layout/Index.cshtml";
 }
 
 <h1>Marke Ändern</h1>
+
 <form method="post">
-    <input type="hidden" asp-for="BrandID" />
-    <label>Marke</label>
-    <input type="text" asp-for="BrandName" class="form-control" style="border: 1px solid #222" />
-    <br />
-    <button class="btn btn-outline-success">Ändern</button>
+    <div class="card-body">
+        <div class="row">
+            <input type="hidden" asp-for="BrandID" />
+            <div class="col-lg-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="BrandName"
+                           placeholder="Marke">
+                    <label for="floatingInput">Marke</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Ändern <i class="ri-edit-line"></i></button>
 </form>
+
 

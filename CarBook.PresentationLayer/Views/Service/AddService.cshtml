@@ -1,22 +1,34 @@
 ﻿@model Service
 @{
     ViewData["Title"] = "AddService";
-    Layout = "~/Views/AdminLayout/Index.cshtml";
+    Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>AddService</h1>
-<form method="post" asp-action="AddService" asp-controller="Service">
-    <label>Service Titel</label>
-    <input type="text" asp-for="Title" style="border: 1px solid #2222" class="form-control" />
-    <span asp-validation-for="Title" class="text-danger"></span>
-    <br />
-    <label>Service Beschreibung</label>
-    <input type="text" asp-for="Description" style="border: 1px solid #2222" class="form-control" />
-    <span asp-validation-for="Description" class="text-danger"></span>
-    <br />
-    <label>Service Icon</label>
-    <input type="text" asp-for="Icon" style="border: 1px solid #2222" class="form-control" />
-    <span asp-validation-for="Icon" class="text-danger"></span>
-    <br />
-    <button class="btn btn-primary">Service hinzufügen</button>
+<h1>Service hinzufügen</h1>
+<form method="post">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Title" placeholder="Marke" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                           
+                    <label for="floatingInput">Titel</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Description" placeholder="Marke" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                    
+                    <label for="floatingInput">Beschreibung</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Icon" placeholder="Marke" />
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                   
+                    <label for="floatingInput">Icon</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Hinzufügen <i class="ri-add-circle-line"></i></button>
 </form>

@@ -1,0 +1,37 @@
+﻿@model Service
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Service ändern</h1>
+
+<form method="post">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="hidden" asp-for="ServiceID" />
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Title" placeholder="Marke" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+
+                    <label for="floatingInput">Titel</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Description" placeholder="Marke" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+
+                    <label for="floatingInput">Beschreibung</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" asp-for="Icon" placeholder="Marke" />
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+
+                    <label for="floatingInput">Icon</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Ändern <i class="ri-edit-line"></i></button>
+</form>
+
