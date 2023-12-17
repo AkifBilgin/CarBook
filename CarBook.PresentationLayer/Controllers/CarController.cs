@@ -1,11 +1,14 @@
 ﻿
+using AutoMapper;
 using CarBook.BusinessLayer.Abstract;
 using CarBook.EntityLayer.Concrete;
+using CarBook.PresentationLayer.Dtos.CarPictureDto;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Drawing.Drawing2D;
 
 namespace CarBook.PresentationLayer.Controllers
 {
@@ -17,9 +20,11 @@ namespace CarBook.PresentationLayer.Controllers
         private readonly ICarCategoryService _carCategoryService;
         private readonly ICarStatusService _carStatusService;
         private readonly IConfiguration _configuration;
+        private readonly ICarPictureService _carPictureService;
+        private readonly IMapper _mapper;
 
 
-        public CarController(ICarService carService, ICarDetailService carDetailService, IBrandService brandService, ICarCategoryService carCategoryService, ICarStatusService carStatusService, IConfiguration configuration)
+        public CarController(ICarService carService, ICarDetailService carDetailService, IBrandService brandService, ICarCategoryService carCategoryService, ICarStatusService carStatusService, IConfiguration configuration, ICarPictureService carPictureService, IMapper mapper)
         {
             _carService = carService;
             _carDetailService = carDetailService;
@@ -27,6 +32,8 @@ namespace CarBook.PresentationLayer.Controllers
             _carCategoryService = carCategoryService;
             _carStatusService = carStatusService;
             _configuration = configuration;
+            _carPictureService = carPictureService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -139,12 +146,38 @@ namespace CarBook.PresentationLayer.Controllers
 
 
 
-        public IActionResult CarList()
+        public IActionResult CarList(byte personCount, decimal carPrice, string brand = null, string model = null, string gearType = null)
         {
             ViewBag.title1 = "Fahrzeug Liste";
             ViewBag.title2 = "unsere Autos";
-            var values = _carService.TGetAllCarsWithBrands();
-            return View(values);
+
+            ViewData["PersonCount"] = personCount;
+            ViewData["CarPrice"] = carPrice;
+            ViewData["Brand"] = brand;
+            ViewData["Model"] = model;
+            ViewData["GearType"] = gearType;
+            var cars = from x in _carService.TGetAllCarsWithBrands() select x;
+            if (!string.IsNullOrEmpty(brand))
+            {
+                cars = cars.Where(x => x.Brand.BrandName.Contains(brand, StringComparison.OrdinalIgnoreCase));
+            }
+            if (!string.IsNullOrEmpty(model))
+            {
+                cars = cars.Where(x => x.Model.Contains(model, StringComparison.OrdinalIgnoreCase));
+            }
+            if (!string.IsNullOrEmpty(gearType))
+            {
+                cars = cars.Where(x => x.GearType.Equals(gearType, StringComparison.OrdinalIgnoreCase));
+            }
+            if (personCount > 0)
+            {
+                cars = cars.Where(x => x.PersonCount.Equals(personCount));
+            }
+            if (carPrice > 0)
+            {
+                cars = cars.Where(x => x.CarPrice <= carPrice);
+            }
+            return View(cars.ToList());
         }
 
         public IActionResult CarDetails(int id)
@@ -152,8 +185,12 @@ namespace CarBook.PresentationLayer.Controllers
             ViewBag.title1 = "Fahrzeug Details";
             ViewBag.title2 = "Details";
             ViewBag.id = id;
+            TempData["id"] = id;
             var value = _carDetailService.TGetCarDetailByCarId(id);
-            ViewBag.CarDetails = value.Description;
+            TempData["CarDetails"] = value.Description;
+            //var carPictures = _carPictureService.GetPicturesByCarId(id);
+            //var values = _mapper.Map<List<ResultCarPictureDto>>(carPictures);
+
             return View();
         }
 

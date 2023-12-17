@@ -261,6 +261,36 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.ToTable("CarDetails");
                 });
 
+            modelBuilder.Entity("CarBook.EntityLayer.Concrete.CarPicture", b =>
+                {
+                    b.Property<int>("CarPictureID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarPictureID"), 1L, 1);
+
+                    b.Property<int>("CarID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CarPicturUrl1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CarPicturUrl2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CarPicturUrl3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CarPictureID");
+
+                    b.HasIndex("CarID");
+
+                    b.ToTable("CarPictures");
+                });
+
             modelBuilder.Entity("CarBook.EntityLayer.Concrete.CarStatus", b =>
                 {
                     b.Property<int>("CarStatusID")
@@ -305,6 +335,39 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.HasIndex("CarID");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("CarBook.EntityLayer.Concrete.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
                 });
 
             modelBuilder.Entity("CarBook.EntityLayer.Concrete.HowItWorksStep", b =>
@@ -367,6 +430,34 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.HasIndex("CarID");
 
                     b.ToTable("Prices");
+                });
+
+            modelBuilder.Entity("CarBook.EntityLayer.Concrete.Rental", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("From")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("Until")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("CarBook.EntityLayer.Concrete.Service", b =>
@@ -540,6 +631,17 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.Navigation("Car");
                 });
 
+            modelBuilder.Entity("CarBook.EntityLayer.Concrete.CarPicture", b =>
+                {
+                    b.HasOne("CarBook.EntityLayer.Concrete.Car", "Car")
+                        .WithMany("CarPictures")
+                        .HasForeignKey("CarID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
             modelBuilder.Entity("CarBook.EntityLayer.Concrete.Comment", b =>
                 {
                     b.HasOne("CarBook.EntityLayer.Concrete.Car", "Car")
@@ -556,6 +658,17 @@ namespace CarBook.DataAccessLayer.Migrations
                     b.HasOne("CarBook.EntityLayer.Concrete.Car", "Car")
                         .WithMany("Prices")
                         .HasForeignKey("CarID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+                });
+
+            modelBuilder.Entity("CarBook.EntityLayer.Concrete.Rental", b =>
+                {
+                    b.HasOne("CarBook.EntityLayer.Concrete.Car", "Car")
+                        .WithMany("Rentals")
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -627,9 +740,13 @@ namespace CarBook.DataAccessLayer.Migrations
                 {
                     b.Navigation("CarDetails");
 
+                    b.Navigation("CarPictures");
+
                     b.Navigation("Comments");
 
                     b.Navigation("Prices");
+
+                    b.Navigation("Rentals");
                 });
 
             modelBuilder.Entity("CarBook.EntityLayer.Concrete.CarCategory", b =>

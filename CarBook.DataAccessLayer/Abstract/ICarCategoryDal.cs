@@ -9,5 +9,6 @@ namespace CarBook.DataAccessLayer.Abstract
 {
     public interface ICarCategoryDal : IGenericDal<CarCategory>
     {
+        List<CarCategory> GetCarsGroupedByCategory();
     }
 }

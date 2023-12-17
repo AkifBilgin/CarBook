@@ -18,6 +18,11 @@ namespace CarBook.BusinessLayer.Concrete
             _carCategoryDal = carCategoryDal;
         }
 
+        public List<CarCategory> GetCarsGroupedByCategory()
+        {
+            return _carCategoryDal.GetCarsGroupedByCategory();
+        }  
+
         public void TDelete(CarCategory entity)
         {
             _carCategoryDal.Delete(entity);

@@ -4,8 +4,6 @@
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>Neue Marke Hinzufügen</h1>
-
 <form method="post" asp-action="AddCar" asp-controller="Car" enctype="multipart/form-data">
     <div class="card-body">
         <div class="row">
@@ -19,14 +17,14 @@
                     <select class="form-select" id="floatingSelect" asp-for="CarCategoryID" asp-items="@ViewBag.CarCategory"
                             aria-label="Floating label select example">
                     </select>
-                    <label for="floatingSelect">Works with selects</label>
+                    <label for="floatingSelect">Fahrzeug Art</label>
                 </div>
                 <br />
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelect" asp-for="BrandID" asp-items="@ViewBag.CarBrand"
                             aria-label="Floating label select example">
                     </select>
-                    <label for="floatingSelect">Works with selects</label>
+                    <label for="floatingSelect">Fahrzeug Modell</label>
                 </div>
                 <br />
                 <div class="form-floating mb-3">

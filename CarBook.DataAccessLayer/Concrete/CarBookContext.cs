@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,11 @@ namespace CarBook.DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("Server=LAPTOP-AKIF\\SQLSERVER;initial catalog=CarBookDb;integrated Security=true");
 
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+           builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(builder);
+        }
 
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Car> Cars { get; set; }
@@ -27,6 +33,9 @@ namespace CarBook.DataAccessLayer.Concrete
         public DbSet<HowItWorksStep> HowItWorksSteps { get; set; }
         public DbSet<CarDetail> CarDetails { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<CarPicture> CarPictures { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
 
 
     }

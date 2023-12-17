@@ -13,11 +13,12 @@
     <div class="how-it-works d-flex">
         @foreach (var item in Model)
         {
+            i++;
             <div class="step">
                 <span class="number"><span>0<span>@i</span></span></span>
                 <span class="caption">@item.Description</span>
             </div>
-            i++;
+           
         }
     </div>
 </div>

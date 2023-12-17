@@ -1,0 +1,54 @@
+﻿@model Rental
+<div class="modal fade" id="rental-@Model.CarId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Fahrzeug Buchen</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-action="CreateRental" asp-controller="Rental">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="hidden" class="form-control" id="carId-@Model.CarId" value="@Model.CarId" readonly asp-for="CarId">
+                    </div>
+                    <div class="mb-3">
+                        <label for="startDate-@Model.CarId" class="form-label">Startdatum</label>
+                        <input type="date" class="form-control" id="startDate-@Model.CarId" value="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="From">
+                    </div>
+                    <div class="mb-3">
+                        <label for="endDate-@Model.CarId" class="form-label">Enddatum</label>
+                        <input type="date" class="form-control" id="endDate-@Model.CarId" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")" asp-for="Until">
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes-@Model.CarId" class="form-label">Notizen</label>
+                        <textarea class="form-control" id="notes-@Model.CarId" rows="5" asp-for="Message"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+                <button type="submit" id="btnRental-@Model.CarId" class="btn btn-primary btn-submit-rental">Jetzt buchen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        Swal.fire('Erfolg', '@TempData["SuccessMessage"]', 'success');
+    </script>
+}
+
+@if (TempData["ErrorMessages"] != null)
+{
+    <script>
+        Swal.fire('Erorr', 'Startdatum kann nicht größer als Enddatum sein', 'error');
+    </script>
+}
+
+
+
+
+
+

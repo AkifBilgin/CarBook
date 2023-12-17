@@ -1,0 +1,59 @@
+﻿@model List<Rental>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Buchungen</h1>
+
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered border-primary table-centered mb-0">
+                <thead>
+                    <tr>
+                        <th>Fahrzeug ID</th>
+                        <th>Startdatum</th>
+                        <th>Enddatum</th>
+                        <th class="text-center">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CarId</td>
+                            <td>@item.From.ToShortDateString()</td>
+                            <td>@item.From.ToShortDateString()</td>
+                            @if (item.Message is not null)
+                            {
+                                <td>@item.Message</td>
+                            }
+                            else
+                            {
+                                <td>Keine Nachricht</td>
+                            }
+                            <td class="text-center">
+                                <a href="#" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                </a>
+                                <a href="#" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Ändern">
+                                    <i class="ri-edit-line"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

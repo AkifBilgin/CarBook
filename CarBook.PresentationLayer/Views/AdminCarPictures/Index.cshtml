@@ -1,0 +1,59 @@
+﻿@model CreateCarPictureDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+<h1>Fotos hochladen</h1>
+<hr /><br />
+<form method="post" asp-action="Index" asp-controller="AdminCarPictures" enctype="multipart/form-data">
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <label>Fahrzeug auswählen</label>
+                <select class="form-select" id="floatingSelect" asp-for="CarID" asp-items="@ViewBag.CarId" 
+                        aria-label="Floating label select example">
+                </select>
+                <div class="mb-3">
+                    <label for="example-fileinput" class="form-label">
+                        Frontansicht
+                    </label>
+                    <input type="file" id="example-fileinput" class="form-control" asp-for="CarPicturUrl1" name="image1">
+                </div>
+                <div class="mb-3">
+                    <label for="example-fileinput" class="form-label">
+                        Heckansicht
+                    </label>
+                    <input type="file" id="example-fileinput" class="form-control" asp-for="CarPicturUrl2" name="image2">
+                </div>
+                <div class="mb-3">
+                    <label for="example-fileinput" class="form-label">
+                        Interior
+                    </label>
+                    <input type="file" id="example-fileinput" class="form-control" asp-for="CarPicturUrl3" name="image3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="addCarPicture"  class="btn btn-outline-primary">Fotos Hinzufügen <i class="ri-add-circle-line"></i></button>
+</form>
+
+<script>
+    const addCarPicture = document.querySelector('#addCarPicture');
+    const formPicture = addCarPicture.closest('form');
+
+    addCarPicture.addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Hinzugefügt",
+            text: "Fotos erfolgreich hinzugefügt",
+            imageUrl: "https://res.cloudinary.com/djlqp41lf/image/upload/v1700939008/Rental_Logo_gg454l.png",
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: "Firmen Logo"
+        }).then(function () {
+            formPicture.submit();
+        });
+    });
+</script>

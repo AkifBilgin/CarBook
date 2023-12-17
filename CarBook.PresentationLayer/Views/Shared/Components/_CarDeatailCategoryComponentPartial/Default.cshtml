@@ -5,7 +5,8 @@
         <h3>Kategorien</h3>
         @foreach (var item in Model)
         {
-            <li><a href="#">@item.CategoryName <span>(0)</span></a></li>
+        
+            <li><a href="#">@item.CategoryName <span>@item.Cars.Count</span></a></li>
         }    
     </div>
 </div>

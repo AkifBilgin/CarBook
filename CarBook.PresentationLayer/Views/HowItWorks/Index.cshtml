@@ -1,0 +1,55 @@
+﻿@model List<ResultHowItWorksDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+    int count = 0;
+ 
+}
+
+@await Html.PartialAsync("~/Views/HowItWorks/AddHowItWorks.cshtml", new CreateHowItWorksDto())
+
+<h1>Index</h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered border-primary table-centered mb-0">
+                <thead>
+                    <tr>
+                        <th>Marke</th>
+                        <th>Status</th>
+                        <th class="text-center">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                      
+                        @await Html.PartialAsync("~/Views/HowItWorks/UpdateHowItWorks.cshtml", item)
+                        count++;
+                        <tr>                           
+                            <td>Schritt: @count</td>
+                            <td>@item.Description</td>                            
+                            <td class="text-center">
+                                <a href="/HowItWorks/DeleteHowItWorks/@item.HowItWorksStepID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                </a>
+                                <a href="/HowItWorks/UpdateHowItWorks/@item.HowItWorksStepID" class="text-reset fs-16 px-1" data-bs-toggle="modal" data-bs-target="#updateHowItWorks-@item.HowItWorksStepID">
+                                    <i class="ri-edit-line" data-bs-toggle="tooltip" data-bs-placement="top"
+                                       data-bs-custom-class="custom-tooltip"
+                                       data-bs-title="Ändern"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<a href="/HowItWorks/AddHowItWorks" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addHowItWorks">Neuer Schritt <i class=" ri-add-circle-line"></i></a>
+

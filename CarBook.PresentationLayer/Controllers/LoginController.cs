@@ -26,7 +26,7 @@ namespace CarBook.PresentationLayer.Controllers
 
             if(result.Succeeded)
             {
-                return RedirectToAction("Index", "Car");
+                return RedirectToAction("Index", "AdminDashboard");
             }
          
             return View();

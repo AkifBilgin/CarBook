@@ -1,0 +1,11 @@
+﻿.initials {
+    width: 50px; /* Anpassen Sie die Größe nach Bedarf */
+    height: 50px; /* Anpassen Sie die Größe nach Bedarf */
+    background-color: #007bff; /* Hintergrundfarbe */
+    color: white; /* Textfarbe */
+    font-size: 20px; /* Anpassen Sie die Schriftgröße nach Bedarf */
+    text-align: center;
+    line-height: 50px; /* Zentrieren Sie den Text vertikal */
+    border-radius: 50%; /* Kreisform */
+    display: inline-block;
+}

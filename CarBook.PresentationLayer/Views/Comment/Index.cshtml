@@ -1,0 +1,47 @@
+﻿@model List<ResultCommentDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<h1>Fahrzeug Kommentare</h1>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive-sm">
+            <table class="table table-bordered border-primary table-centered mb-0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Kommentar</th>
+                        <th>Fahrzeug</th>
+                        <th>Datum</th>
+                        <th class="text-center">Aktion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.NameSurname</td>
+                            <td>@item.Description</td>
+                            <td>@item.Car.Brand.BrandName @item.Car.Model</td>
+                            <td>@item.CreatedDate.ToShortDateString()</td>
+                            <td class="text-center">
+                                <a href="/Comment/DeleteComment/@item.CommentID" class="text-reset fs-16 px-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                                   data-bs-custom-class="custom-tooltip"
+                                   data-bs-title="Löschen">
+                                    <i class="ri-delete-bin-2-line"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

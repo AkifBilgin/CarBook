@@ -4,6 +4,7 @@ using CarBook.DataAccessLayer.Abstract;
 using CarBook.DataAccessLayer.Concrete;
 using CarBook.DataAccessLayer.EntityFramework;
 using CarBook.EntityLayer.Concrete;
+using CarBook.PresentationLayer.Mapping;
 using CarBook.PresentationLayer.Models;
 using CloudinaryDotNet;
 using FluentValidation.AspNetCore;
@@ -43,9 +44,18 @@ builder.Services.AddScoped<ICarDetailService, CarDetailManager>();
 builder.Services.AddScoped<ICommentDal, EfCommentDal>();
 builder.Services.AddScoped<ICommentService, CommentManager>();
 
+builder.Services.AddScoped<ICarPictureDal, EfCarPictureDal>();
+builder.Services.AddScoped<ICarPictureService, CarPictureManager>();
+
+builder.Services.AddScoped<IContactDal, EfContactDal>();
+builder.Services.AddScoped<IContactService, ContactManager>();
+
+builder.Services.AddScoped<IRentalDal, EfRentalDal>();
+builder.Services.AddScoped<IRentalService, RentalManager>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<CarBookContext>().AddErrorDescriber<CustomIdentityValidator>();
-
-
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
 var app = builder.Build();

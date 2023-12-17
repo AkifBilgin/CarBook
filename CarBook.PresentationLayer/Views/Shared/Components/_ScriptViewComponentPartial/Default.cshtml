@@ -1,7 +1,7 @@
 ﻿
 <script src="~/carrent-master/js/jquery-3.3.1.min.js"></script>
 <script src="~/carrent-master/js/popper.min.js"></script>
-<script src="~/carrent-master/js/bootstrap.min.js"></script>
+@* <script src="~/carrent-master/js/bootstrap.min.js"></script> *@
 <script src="~/carrent-master/js/owl.carousel.min.js"></script>
 <script src="~/carrent-master/js/jquery.sticky.js"></script>
 <script src="~/carrent-master/js/jquery.waypoints.min.js"></script>
@@ -11,3 +11,14 @@
 <script src="~/carrent-master/js/bootstrap-datepicker.min.js"></script>
 <script src="~/carrent-master/js/aos.js"></script>
 <script src="~/carrent-master/js/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+</script>

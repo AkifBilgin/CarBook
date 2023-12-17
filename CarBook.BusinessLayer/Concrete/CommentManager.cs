@@ -18,6 +18,11 @@ namespace CarBook.BusinessLayer.Concrete
             _commentDal = commentDal;
         }
 
+        public List<Comment> GetAllCommentsWithCar()
+        {
+            return _commentDal.GetAllCommentsWithCar();
+        }
+
         public void TDelete(Comment entity)
         {
             _commentDal.Delete(entity);

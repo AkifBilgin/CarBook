@@ -18,5 +18,26 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-outline-primary">Hinzufügen <i class="ri-add-circle-line"></i></button>
+    <button id="btnAddBrand" class="btn btn-outline-primary">Hinzufügen <i class="ri-add-circle-line"></i></button>
 </form>
+
+
+
+<script>
+    const addBrandButton = document.querySelector('#btnAddBrand');
+    const formBrand = addBrandButton.closest('form');
+
+    addBrandButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Hinzugefügt",
+            text: "Marke wurde erfolgreich hinzugefügt",
+            imageUrl: "https://res.cloudinary.com/djlqp41lf/image/upload/v1700939008/Rental_Logo_gg454l.png",
+            imageWidth: 300,
+            imageHeight: 200,
+            imageAlt: "Firmen Logo"
+        }).then(function () {
+            formBrand.submit();
+        });
+    });
+</script>

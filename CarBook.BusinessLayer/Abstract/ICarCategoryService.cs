@@ -9,5 +9,6 @@ namespace CarBook.BusinessLayer.Abstract
 {
     public interface ICarCategoryService : IGenericService<CarCategory>
     {
+        List<CarCategory> GetCarsGroupedByCategory();
     }
 }

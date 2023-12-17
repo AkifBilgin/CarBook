@@ -1,0 +1,18 @@
+﻿@model List<ResultCarPictureDto>
+
+<div class="nonloop-block-13 owl-carousel">
+    @foreach (var item in Model)
+    {
+        <div class="item-1">
+            <a href="#"><img src="@item.CarPicturUrl1" alt="Image" class="img-fluid"></a>
+        </div>
+        <div class="item-1">
+            <a href="#"><img src="@item.CarPicturUrl2" alt="Image" class="img-fluid"></a>
+        </div>     <div class="item-1">
+            <a href="#"><img src="@item.CarPicturUrl3" alt="Image" class="img-fluid"></a>
+        </div>
+
+    }
+
+
+</div>
