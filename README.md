@@ -44,3 +44,4 @@ Technologies used in the project:
 *   N-Layer-Architecture
 *   Dependency-Injection
 *   Microsoft SQL-Server
+*   Fluent-Validation
